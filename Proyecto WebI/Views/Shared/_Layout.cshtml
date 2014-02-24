@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/menu.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+     <div id="navcontainer"> <ul id="navlist"> <li><a href="#"><span>Home</span></a></li> <li><a href="#"><span>Link 2</span></a></li> <li><a href="#"><span>Link 3</span></a></li> <li><a href="#"><span>Linddddkdd 4</span></a></li> <li><a href="#"><span>Link 5</span></a></li> <li><a href="#"><span>Link 6</span></a></li> <li><a href="#"><span>Linddddk 7</span></a></li> </ul> </div>
+
+    <div>@Html.ActionLink("Recomentacion","index", "CRecomentacion")</div>
+    <p>&nbsp;</p>
+    @RenderBody()
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
