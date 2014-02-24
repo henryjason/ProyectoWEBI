@@ -8,11 +8,24 @@
     @Styles.Render("~/Content/menu.css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
+
 <body>
 
-     <div id="navcontainer"> <ul id="navlist"> <li><a href="#"><span>Home</span></a></li> <li><a href="#"><span>Link 2</span></a></li> <li><a href="#"><span>Link 3</span></a></li> <li><a href="#"><span>Linddddkdd 4</span></a></li> <li><a href="#"><span>Link 5</span></a></li> <li><a href="#"><span>Link 6</span></a></li> <li><a href="#"><span>Linddddk 7</span></a></li> </ul> </div>
+    <table border="0" cellspacing="0"><tbody>
+<tr> <td><div class="separator">
+<a href="https://play.google.com/store/apps/details?id=com.map.appgoogle" target="_black" title=" Download Web"rel="Descargar"><img border="0" height="165" src="http://3.bp.blogspot.com/-cx4bgu7BXeU/UOd0kQZK_uI/AAAAAAAAAdo/K1zyJsCc1Xs/s200/house1.gif" width="110" /></a></div></td>
+<td style="padding-right:0px; margin-top:0px; padding-left:0px; padding-bottom:0px; width:0%;">
 
-    <div>@Html.ActionLink("Recomentacion","index", "CRecomentacion")</div>
+<div class="separator" style="clear: both; text-align: center;">
+<a href="http://1.bp.blogspot.com/-9kgvoL_1Ljc/UwuPZpD2XOI/AAAAAAAAAok/2XkxBNHwkSE/s1600/CURRICULUM.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://1.bp.blogspot.com/-9kgvoL_1Ljc/UwuPZpD2XOI/AAAAAAAAAok/2XkxBNHwkSE/s1600/CURRICULUM.png" height="165" width="1000" /></a></div>
+
+</td>
+<td><div class="separator">
+<a href="https://play.google.com/store/apps/details?id=com.map.appgoogle" target="_black" title=" Download Web"rel="Descargar"><img border="0" height="90" src="http://2.bp.blogspot.com/-RcWfCF2d-s4/UvxWT0jiVOI/AAAAAAAAAoU/6xsrRaCBb-o/s1600/AppGPlaceS.png" width="110" /></a></div></td></tr></tbody></table>
+
+
+     <div id="navcontainer"> <ul id="navlist"> <li><a  @Html.ActionLink("HOME","index", "HOME")</a></li>  <li><a @Html.ActionLink("RECOMENTATION","index", "CRecomentacion")</a></li> <li><a href="#"><span>CONTACT</span></a></li> <li><a href="#"><span>ABOUT PAGE</span></a></li> </ul> </div>
+
     <p>&nbsp;</p>
     @RenderBody()
 
