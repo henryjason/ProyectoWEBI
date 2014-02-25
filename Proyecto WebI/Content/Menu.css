@@ -1,6 +1,7 @@
 ﻿
 
 #navcontainer { background: #f0e7d7; margin: 0 auto; padding: .4em 0 .2em 0; font-family: georgia, serif; text-transform: uppercase; font-size: 14px; } 
+#menu { margin-left:40px; margin-right:40px; padding: 0; width: 100%; mar} 
 #navcontainer:after { content: "."; display: block; line-height: 1px; font-size: 1px; clear: both; } 
 ul#navlist { list-style: none; padding: 0; margin: 0 auto; width: 80%; font-size: 0.8em; } 
 ul#navlist li { display: block; float: left; margin: 0; padding-bottom: 2px; } 
