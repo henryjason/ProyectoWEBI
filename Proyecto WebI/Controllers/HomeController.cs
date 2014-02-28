@@ -33,27 +33,7 @@ namespace Proyecto_WebI.Controllers
             return Content("Success");
         }
 
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Sendlink(FormCollection formCollection)
-        {
-            try
-            {
-
-                var mailMessage = new MailMessage();
-                mailMessage.To.Add("henryjason2009@hotmail.com");
-                mailMessage.Subject = "como estas";
-                mailMessage.Body = "como";
-                mailMessage.IsBodyHtml = true;
-
-                var smtpClient = new SmtpClient { EnableSsl = true };
-                smtpClient.Send(mailMessage);
-            }
-            catch
-            {
-
-            }
-            return null;
-        }
+        
 
     }
 }
