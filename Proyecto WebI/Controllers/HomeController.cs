@@ -23,12 +23,12 @@ namespace Proyecto_WebI.Controllers
             return View();
         }
 
-        public ActionResult SendMail(string Subject, string Body)
+        public ActionResult SendMail(string Subject,string name, string from, string Body)
         {
 
 
             EMail oMail = new EMail();
-            EMail.Send("henryjason2009@hotmail.com", Subject, Body );
+            EMail.Send("maps.gplaces@gmail.com", Subject +  " -> " + " (" + name + ") " + from, from, Body );
 
             return Content("Success");
         }

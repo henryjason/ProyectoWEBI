@@ -39,7 +39,7 @@ namespace Proyecto_WebI.Models
             }
         }
 
-        public static void Send(string toAddress, string subject, string body)
+        public static void Send(string toAddress, string subject, string from, string body)
         {
             var mailMessage = new MailMessage();
             mailMessage.To.Add(toAddress);
@@ -49,6 +49,17 @@ namespace Proyecto_WebI.Models
 
             var smtpClient = new SmtpClient { EnableSsl = true };
             smtpClient.Send(mailMessage);
+
+
+            var mailMessageR = new MailMessage();
+            mailMessageR.To.Add(from);
+            mailMessageR.Subject = subject;
+            mailMessageR.Body = "autoresponder: \n Gracias Por su recomentacion \n Atte: GPlaceS ";
+            mailMessageR.IsBodyHtml = true;
+
+            var smtpClientR = new SmtpClient { EnableSsl = true };
+            smtpClientR.Send(mailMessageR);
+
         }
 
     }
