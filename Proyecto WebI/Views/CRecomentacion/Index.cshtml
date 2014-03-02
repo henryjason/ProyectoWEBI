@@ -1,51 +1,74 @@
 ﻿@model IEnumerable<Proyecto_WebI.Models.Recomentacion>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Recomendacion";
 }
 
-<h2>Index</h2>
+<h1 style="text-align:center">RECOMENTACIONES</h1>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Télefono)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Comentario)
-        </th>
-        <th></th>
-    </tr>
 
+
+
+<table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" style="width: 800px;"><tbody>
+  
+    <tr> 
+        <th style="text-align:right">
+   
+@Html.ActionLink("New Coment", "Create")
+
+        </th>
+   
+   </tr>
+    
+    
 @foreach (var item in Model) {
+
+    
+        
+    
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+             <img src="http://www.elempleo.co.cr/clientes/hv/images/imp_barra.gif" height="5" width="800" /> <br />
+               @Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(modelItem => item.Name)
         </td>
+         
+        </tr>    
+     <tr>
+        
+    
         <td>
-            @Html.DisplayFor(modelItem => item.Télefono)
+           @Html.DisplayNameFor(model => model.Télefono): @Html.DisplayFor(modelItem => item.Télefono)
         </td>
+
+          </tr>
+
+     <tr>
+        
         <td>
-            @Html.DisplayFor(modelItem => item.Email)
+            @Html.DisplayNameFor(model => model.Email): @Html.DisplayFor(modelItem => item.Email)
         </td>
+
+         </tr>
+
+     <tr>
+        
         <td>
+            @Html.DisplayNameFor(model => model.Comentario): 
+            <br />
+            <br />
             @Html.DisplayFor(modelItem => item.Comentario)
         </td>
+
+         </tr>
+
+    <tr>
         <td>
+            <br />
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ID })
         </td>
-    </tr>
+   </tr>
 }
-
+    </tbody>
 </table>
