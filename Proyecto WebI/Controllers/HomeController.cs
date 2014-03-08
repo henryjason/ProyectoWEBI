@@ -30,7 +30,7 @@ namespace Proyecto_WebI.Controllers
             EMail oMail = new EMail();
             EMail.Send("maps.gplaces@gmail.com", Subject +  " -> " + " (" + name + ") " + from, from, Body );
 
-            return Content("Success");
+            return View();
         }
 
         

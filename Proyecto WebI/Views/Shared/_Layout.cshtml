@@ -7,6 +7,7 @@
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/menu.css")
     @Scripts.Render("~/bundles/modernizr")
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 
 <body>
@@ -15,7 +16,7 @@
     <div id="menu">
     <table border="0" cellspacing="0"><tbody>
 <tr> <td><div class="separator">
-<a href="https://play.google.com/store/apps/details?id=com.map.appgoogle" target="_black" title=" Download Web"rel="Descargar"><img border="0" height="165" src="http://3.bp.blogspot.com/-cx4bgu7BXeU/UOd0kQZK_uI/AAAAAAAAAdo/K1zyJsCc1Xs/s200/house1.gif" width="110" /></a></div></td>
+<a href="https://play.google.com/store/apps/details?id=com.map.appgoogle" target="_black" title=" Download Web"rel="Descargar"><img border="0" height="165" src="http://3.bp.blogspot.com/-BGkXVzO16EE/UxYNQG_o4QI/AAAAAAAAAo0/mK_OHq6s1qI/s1600/20140221_203249.jpg" width="110" /></a></div></td>
 <td style="padding-right:0px; margin-top:0px; padding-left:0px; padding-bottom:0px; width:0%;">
 
 <div class="separator" style="clear: both; text-align: center;">
@@ -26,7 +27,7 @@
 <a href="https://play.google.com/store/apps/details?id=com.map.appgoogle" target="_black" title=" Download Web"rel="Descargar"><img border="0" height="90" src="http://2.bp.blogspot.com/-RcWfCF2d-s4/UvxWT0jiVOI/AAAAAAAAAoU/6xsrRaCBb-o/s1600/AppGPlaceS.png" width="110" /></a></div></td></tr></tbody></table>
         </div>
 
-     <div id="navcontainer"> <ul id="navlist"> <li><a  @Html.ActionLink("HOME","index", "HOME")</a></li>  <li><a @Html.ActionLink("RECOMENTATION","index", "CRecomentacion")</a></li> <li><a @Html.ActionLink("CONTACT","Email", "HOME")</a></li> <li><a href="#"><span>ABOUT PAGE</span></a></li> </ul> </div>
+     <div id="navcontainer"> <ul id="navlist"> <li id="mhome"><a  @Html.ActionLink("HOME","index", "HOME")</a></li>  <li id="mrecoment"><a @Html.ActionLink("RECOMENTATION","index", "CRecomentacion")</a></li> <li id="memail"><a @Html.ActionLink("CONTACT","Email", "HOME")</a></li> <li><a href="#"><span>ABOUT PAGE</span></a></li> </ul> </div>
 
     <p>&nbsp;</p>
     @RenderBody()
@@ -34,4 +35,9 @@
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
 </body>
+
+
+  
+
+
 </html>
