@@ -1,0 +1,150 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+        <title>Register</title>
+        <meta name="generator" content="Bootply" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+       
+
+       <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+<script src="~/Scripts/jquery-1.7.1.js" type="text/javascript"></script>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+
+
+        <!-- CSS code from Bootply.com editor -->
+        
+        <style type="text/css">
+            .modal-footer {   border-top: 0px; }
+        </style>
+    </head>
+    
+    <!-- HTML code from Bootply.com editor -->
+    
+    <body  >
+        
+        <!--login modal-->
+<div id="loginModal" class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+  <div class="modal-content">
+      <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h1 class="text-center">Register</h1>
+      </div>
+      <div class="modal-body">
+          <form class="form col-md-12 center-block">
+              <div class="form-group">
+              <input type="text" id="name" class="form-control input-lg" placeholder="Name">
+            </div>
+              <div class="form-group">
+              <input type="text" id="telefono" class="form-control input-lg" placeholder="Telefono">
+            </div>
+            <div class="form-group">
+              <input type="text" id="email" class="form-control input-lg" placeholder="Email">
+            </div>
+             <div class="form-group">
+              <input type="text" id="username" class="form-control input-lg" placeholder="Username">
+            </div>
+            <div class="form-group">
+              <input type="password" id="pass" class="form-control input-lg" placeholder="Password">
+            </div>
+            <div class="form-group">
+              <button type="button" id="submit" class="btn btn-primary btn-lg btn-block">Register</button>
+              <span class="pull-right"><a @Html.ActionLink("Register", "register", "Login")</a></span><span><a @Html.ActionLink("Login", "Index", "Login")</a></span>
+            </div>
+          </form>
+      </div>
+      <div class="modal-footer">
+          <div class="col-md-12">
+          <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+		  </div>	
+      </div>
+  </div>
+  </div>
+
+
+    <input type="button"  value="Print Number" id="btnNumero">
+			
+<script type="text/javascript">
+
+
+    $("#submit").on('click', function () {
+
+
+
+        $.ajax({
+            type: 'POST',
+            url: "/Login/register_user",
+            data: {
+                name: document.getElementById('name').value,      
+                telefono: document.getElementById('telefono').value,    
+                email: document.getElementById('email').value,    
+                username: document.getElementById('username').value,    
+                pass: document.getElementById('pass').value,
+            },
+
+            success: function (data) {
+
+
+                $(function () {
+
+                    document.getElementById('name').value = "",      
+                    document.getElementById('telefono').value  = "",    
+                   document.getElementById('email').value  = "",    
+                    document.getElementById('username').value  = "",    
+                   document.getElementById('pass').value  = "",
+
+                    alert("Usuario fue Registrado");
+
+                });//fin  $(function() {
+
+
+            }// fin de success
+
+        });// fin function ajax
+
+
+    });//$("#btnNumber").on('clik', function () {
+
+</script>
+
+
+<h1 id="Result"> Result</h1>
+
+
+</div>
+        
+        <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+
+        <script type='text/javascript' src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+
+
+
+
+        
+        <!-- JavaScript jQuery code from Bootply.com editor -->
+        
+        <script type='text/javascript'>
+
+            $(document).ready(function () {
+
+
+
+            });
+
+        </script>
+        
+    </body>
+</html>

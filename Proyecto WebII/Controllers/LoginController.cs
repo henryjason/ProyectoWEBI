@@ -60,7 +60,11 @@ namespace Proyecto_WebII.Controllers
             sql.AppendLine("login.pass = @pass ");
             var prueba = db.Database.SqlQuery<Login_Register>(sql.ToString(), new SqlParameter("username", username), new SqlParameter("pass", pass)).ToList();
             ViewBag.prueba = prueba.ToList();
-            
+
+            if (prueba.ToList().Count == 0)
+            {
+                return RedirectToAction("Login_user");
+            }
 
             //return RedirectToAction("prueba");
 
