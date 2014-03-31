@@ -13,12 +13,76 @@
 </head>
 <body>
     <div>
+ 
+    @Styles.Render("~/Content/formulario.css")
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="well well-sm">
+                <form>
+                <div class="row">
+                    <div>
+                        <div class="form-group">
+                            &nbsp&nbsp<label for="name">
+                                Iteractions</label>&nbsp
+                                <a id="New" class="btn btn-info" href="#">New</a>
+                                <a id="Remove" class="btn btn-info" href="#">Remove</a>
+                                <a id="Run" class="btn btn-info" href="#">Run</a>
+                        </div>
+                       
+                        
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+      
+                    <div>
+
+                    </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="well well-sm">
+                <form>
+                <div class="row">
+
+                   <div>
+                        <div class="form-group">
+                        <div>Lista de Interacciones:</div>
+                        </div>
+                    </div>
+
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    
       <table>
     <tr>
-        <th>Id</th>
-        <th>Oferente</th>
-        <th>Articulo</th>
-        <th>Precio</th>
+        <th>UserName:</th>
+        
     </tr>
     @foreach (var item in ViewBag.prueba)
     {

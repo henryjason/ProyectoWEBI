@@ -58,9 +58,10 @@
             <div class="form-group">
               <input type="password" id="pass" class="form-control input-lg" placeholder="Password">
             </div>
+              <a href="~/Views/Login/register.cshtml">~/Views/Login/register.cshtml</a>
             <div class="form-group">
               <button type="button" id="submit" class="btn btn-primary btn-lg btn-block">Register</button>
-              <span class="pull-right"><a @Html.ActionLink("Register", "register", "Login")</a></span><span><a @Html.ActionLink("Login", "Index", "Login")</a></span>
+              <span class="pull-right"><a @Html.ActionLink("Register", "register", "Login")</a></span><span><a @Html.ActionLink("Login", "Login_user", "Login")</a></span>
             </div>
           </form>
       </div>
