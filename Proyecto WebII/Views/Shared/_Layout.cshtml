@@ -16,9 +16,7 @@
         <header>
             <div class="content-wrapper">
               
-                @using (Html.BeginForm("SendMail", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
-
-{
+              
     
     @Styles.Render("~/Content/formulario.css")
     <!-- Latest compiled and minified CSS -->
@@ -86,16 +84,12 @@
        
                    <a id="agregarCampo" class="btn btn-info" href="#">Agregar Parametro</a>
                 <br />
-                
+                   <a id="guardarinteracion" class="btn btn-info" href="#">Agregar Iteracion</a>
 
             </form>
         </div>
     </div>
 </div>
-
-     
-    
-}
 
             </div>
         </header>
@@ -147,6 +141,23 @@
                        
 
                          return false;
+                     });
+
+                    
+
+                     $(function () {
+                         $("#guardarinteracion").click(function () {
+                             $("#contenedor div").each(function (index) {
+
+                                 alert("Contenedor: " + index);
+                  
+                                 $(this).children('input').each(function () {
+                                     alert("input " + this.value); // "this" is the current element in the loop
+                                 });
+                                
+                            
+                             })
+                         })
                      });
 
 
