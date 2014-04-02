@@ -43,7 +43,7 @@
                        <div class="form-group">
                             <label for="URLBase">
                                 URL Base</label>&nbsp
-                            <input type="text"  id="urlbase" name="urlbase" placeholder="http//:localHost/" required="required" size="30"/>
+                            <input type="text"  id="url" name="urlbase" placeholder="http//:localHost/" required="required" size="30"/>
                         </div>
                         <div class="form-group">
                             <label for="action">
@@ -67,7 +67,7 @@
                           
 <div id="contenedor">
     <div>
-        <input type="text" name="mitexto[]" id="campo_1" placeholder="Parametro 1"/><input type="text" name="value[]" id="value_1" placeholder="value 1"/><a href="#" class="eliminar">&times;</a>
+        <input type="text" name="mitexto[]" id="campo_1" placeholder="Parametro 1" required="required"/><input type="text" name="value[]" id="value_1" placeholder="value 1" required="required"/><a href="#" class="eliminar">&times;</a>
     </div>
 </div>
 
@@ -80,13 +80,14 @@
         </div>
         <div class="col-md-4">
             <form>
-            <legend><span class="glyphicon glyphicon-globe"></span>PostMan</legend>
+            <legend><span class="glyphicon glyphicon-globe"></span>PostMan User: @ViewBag.prueba[0].username</legend>
        
                    <a id="agregarCampo" class="btn btn-info" href="#">Agregar Parametro</a>
                 <br />
-                   <a id="guardarinteracion" class="btn btn-info" href="#">Agregar Iteracion</a>
+                   <a id="guardarinteracion" class="btn btn-info" href="#">Guardar Iteracion</a>
 
             </form>
+
         </div>
     </div>
 </div>
@@ -102,11 +103,7 @@
         </div>
 
         <footer>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET MVC</p>
-                </div>
-            </div>
+           
 
   <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
@@ -122,12 +119,14 @@
                      var x = $("#contenedor div").length + 1;
                      var FieldCount = x - 1; //para el seguimiento de los campos
 
+                     
+
                      $(AddButton).click(function (e) {
                          if (x <= MaxInputs) //max input box allowed
                          {
                              FieldCount++;
                              //agregar campo
-                             $(contenedor).append('<div><input type="text" name="mitexto[]" id="campo_' + FieldCount + '" placeholder="Parametro ' + FieldCount + '"/>' + '<input type="text" name="value[]" id="value_' + FieldCount + '" placeholder="Value ' + FieldCount + '"/><a href="#" class="eliminar">&times;</a></div>');
+                             $(contenedor).append('<div><input type="text" name="mitexto[]" id="campo_' + FieldCount + '" placeholder="Parametro ' + FieldCount + '" required="required"/>' + '<input type="text" name="value[]" id="value_' + FieldCount + '" placeholder="Value ' + FieldCount + '"/><a href="#" class="eliminar" required="required">&times;</a></div>');
                              x++; //text box increment
                          }
                          return false;
@@ -141,23 +140,6 @@
                        
 
                          return false;
-                     });
-
-                    
-
-                     $(function () {
-                         $("#guardarinteracion").click(function () {
-                             $("#contenedor div").each(function (index) {
-
-                                 alert("Contenedor: " + index);
-                  
-                                 $(this).children('input').each(function () {
-                                     alert("input " + this.value); // "this" is the current element in the loop
-                                 });
-                                
-                            
-                             })
-                         })
                      });
 
 

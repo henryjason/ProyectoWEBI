@@ -68,7 +68,7 @@
 
                    <div>
                         <div class="form-group">
-                        <div>Lista de Interacciones:</div>
+                        <div id="interacion">Lista de Interacciones:</div>
                         </div>
                     </div>
 
@@ -79,19 +79,92 @@
     </div>
 </div>
     
-      <table>
-    <tr>
-        <th>UserName:</th>
-        
-    </tr>
-    @foreach (var item in ViewBag.prueba)
-    {
-        <tr>
-            <td>@item.username</td>
-        
-        </tr>
-    }
-</table>  
     </div>
+
+
+    <footer>
+
+         <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+        <script type='text/javascript'>
+
+            $(document).ready(function () {
+
+                var pa_va = {};
+
+                $(function () {
+                    $("#guardarinteracion").click(function () {
+                        $("#contenedor div").each(function (index) {
+
+                            alert("Contenedor: " + index);
+                            var vparametro;
+                            var vvalue;
+
+                            $(this).children('input').each(function (index2) {
+
+                                if (index2 == 0) { vparametro = this.value; }
+                                else { vvalue = this.value }
+
+                            });
+
+
+                            pa_va[index] = { parametro: vparametro, value: vvalue };
+
+                            var a = pa_va[0].value;
+
+                            alert("parametro " + a); // "this" is the current element in the loop
+
+                        })
+                    })
+                });
+
+
+            $("#New").on('click', function () {
+
+                $.ajax({
+                    type: 'POST',
+                    url: "/Interacion/register_Interacion",
+                    data: {
+                        id_user: '@ViewBag.prueba[0].id',
+                                 name: document.getElementById('name').value,
+                                 url: document.getElementById('url').value,
+                                 action: document.getElementById('action').value,
+                                 verb: document.getElementById('verb').value,
+
+                             },
+
+
+
+                             success: function (data) {
+
+
+                                 $(function () {
+
+                                     document.getElementById('name').value = "",
+                                     document.getElementById('url').value = "",
+                                    document.getElementById('action').value = "",
+
+
+
+                                     alert("Iteracion Guardada");
+
+                                 });//fin  $(function() {
+
+
+                             }// fin de success
+
+                         });// fin function ajax
+
+
+            });//$("#btnNumber").on('clik', function () {
+
+            });
+
+        </script>
+
+    </footer>
+
 </body>
+
+    
 </html>

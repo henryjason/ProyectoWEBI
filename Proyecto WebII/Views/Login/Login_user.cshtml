@@ -51,6 +51,7 @@
       <div class="modal-body">
                
           <form action="Login/index" method="post" class="form col-md-12 center-block">
+
             <div class="form-group">
               <input type="text" name="username" class="form-control input-lg" placeholder="Username" required="required">
             </div>
@@ -58,9 +59,8 @@
               <input type="password" name="pass" class="form-control input-lg" placeholder="Password"  required="required">
             </div>
             <div class="form-group">
-              <button class="btn btn-primary btn-lg btn-block" >Sign In</button>
-               <button type="submit" class="btn btn-primary btn-lg btn-block" value="Send" name="Send" id="Send">
-                            Send Message</button>
+              <button type="submit" class="btn btn-primary btn-lg btn-block" >Sign In</button>
+          
               <span class="pull-right"><a @Html.ActionLink("Register", "register", "Login")</a></span><span><a @Html.ActionLink("Login", "Login_user", "Login")</a></span>
             </div>
           </form>

@@ -122,11 +122,13 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\InteracionController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AppDB.cs" />
+    <Compile Include="Models\Interacion.cs" />
     <Compile Include="Models\Login_Register.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
