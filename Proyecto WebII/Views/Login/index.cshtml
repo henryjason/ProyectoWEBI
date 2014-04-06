@@ -69,6 +69,9 @@
                    <div>
                         <div class="form-group">
                         <div id="interacion">Lista de Interacciones:</div>
+                        <div id="ListaIteracions">
+
+                        </div>
                         </div>
                     </div>
 
@@ -91,45 +94,40 @@
             $(document).ready(function () {
 
                 var pa_va = {};
+                var pa_vaString;
 
-                $(function () {
-                    $("#guardarinteracion").click(function () {
-                        $("#contenedor div").each(function (index) {
+                $("#New").on('click', function () {
 
-                            alert("Contenedor: " + index);
-                            var vparametro;
-                            var vvalue;
+                    $("#contenedor div").each(function (index) {
 
-                            $(this).children('input').each(function (index2) {
+                      
+                        var vparametro;
+                        var vvalue;
 
-                                if (index2 == 0) { vparametro = this.value; }
-                                else { vvalue = this.value }
+                        $(this).children('input').each(function (index2) {
 
-                            });
+                            if (index2 == 0) { vparametro = this.value; }
+                            else { vvalue = this.value }
 
-
-                            pa_va[index] = { parametro: vparametro, value: vvalue };
-
-                            var a = pa_va[0].value;
-
-                            alert("parametro " + a); // "this" is the current element in the loop
-
-                        })
-                    })
-                });
+                        });
 
 
-            $("#New").on('click', function () {
+                        pa_va[index] = { parametro: vparametro, value: vvalue };
 
-                $.ajax({
-                    type: 'POST',
-                    url: "/Interacion/register_Interacion",
-                    data: {
-                        id_user: '@ViewBag.prueba[0].id',
-                                 name: document.getElementById('name').value,
-                                 url: document.getElementById('url').value,
-                                 action: document.getElementById('action').value,
-                                 verb: document.getElementById('verb').value,
+                        pa_vaString = JSON.stringify(pa_va);
+                    });
+
+
+                    $.ajax({
+                        type: 'POST',
+                        url: "/Interacion/register_Interacion",
+                        data: {
+                            id_user: '@ViewBag.prueba[0].id',
+                            name: document.getElementById('name').value,
+                            url: document.getElementById('url').value,
+                            action: document.getElementById('action').value,
+                            verb: document.getElementById('verb').value,
+                            pa_va: pa_vaString,
 
                              },
 
@@ -137,16 +135,22 @@
 
                              success: function (data) {
 
+                                 for (var i = 0; data.Iteracion.length > i; i++) {
+
+                                     $('#ListaIteracions').append('<div><input type="text"  value="' + data.Iteracion[i].name + '" required="required"/>' + '<p>' + data.Iteracion[i].parametro + '<p/><a href="#" class="delete">&times;</a></div>');
+                                             
+                               
+                                     //alert(data.Iteracion[i].name);
+                                 }
 
                                  $(function () {
 
                                      document.getElementById('name').value = "",
                                      document.getElementById('url').value = "",
-                                    document.getElementById('action').value = "",
+                                    document.getElementById('action').value = ""
 
 
-
-                                     alert("Iteracion Guardada");
+                                   
 
                                  });//fin  $(function() {
 

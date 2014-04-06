@@ -128,7 +128,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AppDB.cs" />
-    <Compile Include="Models\Interacion.cs" />
+    <Compile Include="Models\Interacions.cs" />
     <Compile Include="Models\Login_Register.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

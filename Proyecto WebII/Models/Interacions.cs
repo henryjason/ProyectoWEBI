@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Proyecto_WebII.Models
 {
-    public class Interacion
+    public class Interacions
     {
 
 
@@ -21,6 +21,8 @@ namespace Proyecto_WebII.Models
             public String action { get; set; }
             [Required]
             public String verb { get; set; }
+            [Required]
+            public String parametro { get; set; }
 
     }
 }
