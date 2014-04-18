@@ -15,6 +15,7 @@
     <div>
  
     @Styles.Render("~/Content/formulario.css")
+    @Styles.Render("~/Content/tabla.css")
     <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
@@ -93,16 +94,17 @@
 
             $(document).ready(function () {
 
-                var pa_va = {};
                 var pa_vaString;
+                var vparametro;
+                var vvalue;
 
                 $("#New").on('click', function () {
 
+                    pa_vaString = "";
+                
                     $("#contenedor div").each(function (index) {
 
-                      
-                        var vparametro;
-                        var vvalue;
+                   
 
                         $(this).children('input').each(function (index2) {
 
@@ -112,10 +114,13 @@
                         });
 
 
-                        pa_va[index] = { parametro: vparametro, value: vvalue };
-
-                        pa_vaString = JSON.stringify(pa_va);
+                        pa_vaString =  pa_vaString + '{ "parametro":' + '"' +vparametro + '"' +', "value":' + '"' +vvalue+ '"' + '},';
+  
                     });
+
+                    
+                    pa_vaString = '{"list":[' + pa_vaString + ']}';
+
 
 
                     $.ajax({
@@ -131,24 +136,17 @@
 
                              },
 
+                        success: function (data) {
 
-
-                             success: function (data) {
-
-                                 for (var i = 0; data.Iteracion.length > i; i++) {
-
-                                     $('#ListaIteracions').append('<div><input type="text"  value="' + data.Iteracion[i].name + '" required="required"/>' + '<p>' + data.Iteracion[i].parametro + '<p/><a href="#" class="delete">&times;</a></div>');
-                                             
-                               
-                                     //alert(data.Iteracion[i].name);
-                                 }
+                            buil_table(data);
 
                                  $(function () {
 
                                      document.getElementById('name').value = "",
                                      document.getElementById('url').value = "",
                                     document.getElementById('action').value = ""
-
+                                     document.getElementById('contenedor').innerHTML = "";
+                                     
 
                                    
 
@@ -160,11 +158,77 @@
                          });// fin function ajax
 
 
-            });//$("#btnNumber").on('clik', function () {
+                });//$("#NEW").on('clik', function () {
+
+
+                $.ajax({
+                    type: 'POST',
+                    url: "/Interacion/get_Interacion",
+                    data: {
+                        id_user: '@ViewBag.prueba[0].id',
+                        },
+
+                    success: function (data) {
+
+                        buil_table(data);
+
+                    }// fin de success
+
+                });// fin function ajax
 
             });
 
         </script>
+
+
+        <script>
+
+            function buil_table(data) {
+
+                var array_parametro = {};
+
+                var tabla = "<div class='CSSTableGenerator'><table > <tr> <td>Check</td> <td>Iteraciones</td> <td>Parametros</td> <td>Value</td> </tr> ";
+
+
+                for (var i = 0; data.Iteracion.length > i; i++) {
+
+                    array_parametro = eval('(' + data.Iteracion[i].parametro + ')');
+
+                    var p = "";
+                    var v = "";
+
+
+                    //recorro el json de string generado
+                    for (var a = 0; array_parametro.list.length > a; a++) {
+
+                        p = p + array_parametro.list[a].parametro + '<br>';
+                        v = v + array_parametro.list[a].value + '<br>';
+
+                        //alert(pa_va.list[a].parametro);
+
+                    }
+
+                    //  $('#ListaIteracions').append('<div><input type="text"  value="' + data.Iteracion[i].name + '" required="required"/>' + '<p>' + data.Iteracion[i].parametro + '<p/><a href="#" class="delete">&times;</a></div>');
+
+                    tabla = tabla + '<tr> <td><input type = "checkbox"  id="' + data.Iteracion[i].id + '"/>' +
+                                    '</td> <td>' + 'Name: ' + data.Iteracion[i].name + '<br>' + 'Url: ' + data.Iteracion[i].url + '<br>' + 'Action: ' + data.Iteracion[i].action + '<br>' + 'Verb: ' + data.Iteracion[i].verb + '<br>' +
+                                    '</td> <td>' + p +
+                                    '</td> <td>' + v +
+                                    '</td> </tr>';
+
+
+
+                    //alert(data.Iteracion[i].name);
+                }
+                tabla = tabla + "</table> </div>";
+
+                document.getElementById('ListaIteracions').innerHTML = tabla;
+
+            }
+
+
+        </script>
+        
 
     </footer>
 
