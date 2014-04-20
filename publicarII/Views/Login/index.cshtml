@@ -97,6 +97,7 @@
                 var pa_vaString;
                 var vparametro;
                 var vvalue;
+                var datos;
 
                 $("#New").on('click', function () {
 
@@ -138,7 +139,9 @@
 
                         success: function (data) {
 
-                            buil_table(data);
+                            datos = data;
+                            buil_table(datos);
+
 
                                  $(function () {
 
@@ -147,9 +150,6 @@
                                     document.getElementById('action').value = ""
                                      document.getElementById('contenedor').innerHTML = "";
                                      
-
-                                   
-
                                  });//fin  $(function() {
 
 
@@ -170,11 +170,23 @@
 
                     success: function (data) {
 
-                        buil_table(data);
+                        datos = data;
+                        buil_table(datos);
 
                     }// fin de success
 
                 });// fin function ajax
+
+             
+
+
+              $("#Run").on('click', function () {
+
+             
+                buil(datos);
+
+                });//$("#Run").on('clik', function () {
+    
 
             });
 
@@ -182,6 +194,8 @@
 
 
         <script>
+
+           
 
             function buil_table(data) {
 
@@ -226,6 +240,77 @@
 
             }
 
+                 function buil(datos) {
+
+             // alert(datos.Iteracion[0].name);
+                   
+                   
+
+                     for (var i = 0; datos.Iteracion.length > i; i++) {
+
+                    var array_parametro = eval('(' + datos.Iteracion[i].parametro + ')');
+                    var parametros = null;
+                   
+
+                    //recorro el json de string generado
+                    for (var a = 0; array_parametro.list.length > a; a++) {
+                        
+                        var p = array_parametro.list[a].parametro;
+                        var v = array_parametro.list[a].value;
+
+                        if (parametros == null) {
+                            parametros = p + '=' + v;
+                        } else {
+                            parametros = parametros + '&' +  p + '=' + v;
+                        }
+
+                        
+
+                      
+              
+                        //alert(pa_va.list[a].parametro);
+                        //data: "status=testing&name=ronny",
+                    }
+
+                     //alert(datos.Iteracion[i].url + datos.Iteracion[i].action);
+
+                    $.ajax({
+                        type: datos.Iteracion[i].verb,
+                        url: datos.Iteracion[i].url + datos.Iteracion[i].action,
+                        data:parametros,
+                        
+                        success: function (data) {
+
+
+                            alert(new String(data));
+
+                        }// fin de success
+
+                    });// fin function ajax
+                  
+
+                  }//fin for
+
+            }
+  
+
+                 function metho() {
+
+                     $.ajax({
+                         type: datos.Iteracion[0].verb,
+                         url: datos.Iteracion[0].url + datos.Iteracion[0].action,
+                         data: {
+                             id_user: 6,
+                         },
+
+                         success: function (data) {
+
+                             alert(JSON.stringify(data));
+
+                         }// fin de success
+
+                     });// fin function ajax
+                 }
 
         </script>
         

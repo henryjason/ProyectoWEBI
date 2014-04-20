@@ -17,7 +17,7 @@ namespace Proyecto_WebII.Models
 
      public DbSet<Login_Register> oLogin_Register { get; set; }
      public DbSet<Interacions> oInteracion { get; set; }
-
+     public DbSet<reportes> oReportes { get; set; }
     }
 
 }

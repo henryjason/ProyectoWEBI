@@ -1,4 +1,5 @@
-﻿@{
+﻿
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -244,9 +245,13 @@
 
              // alert(datos.Iteracion[0].name);
                    
-                   
+                    
+                      var sin_report = "";
+                     var count = 0;
 
                      for (var i = 0; datos.Iteracion.length > i; i++) {
+
+                         
 
                     var array_parametro = eval('(' + datos.Iteracion[i].parametro + ')');
                     var parametros = null;
@@ -273,7 +278,7 @@
                     }
 
                      //alert(datos.Iteracion[i].url + datos.Iteracion[i].action);
-
+                     //alert(datos.Iteracion[i].url + datos.Iteracion[i].action);
                     $.ajax({
                         type: datos.Iteracion[i].verb,
                         url: datos.Iteracion[i].url + datos.Iteracion[i].action,
@@ -281,31 +286,64 @@
                         
                         success: function (data) {
 
+                            count = count+ 1; 
+                           
+                            sin_report = sin_report + 'Interacion ' + count + ' ';
+                    
+                            if (new String(data) == "[object Object]") {
 
-                            alert(new String(data));
+                              
+                                sin_report = sin_report + JSON.stringify(data);
+                           // alert(JSON.stringify(data));
+                            } else {
+
+                               
+                                sin_report = sin_report + data;
+                       // alert(data);
+                            }
+
+                       
+
+                            //location.href = '../Reporte/report';
+                            
+                            if(data.Iteracion.length -1 < count){
+                            
+
+                                save_reporte(sin_report, datos.Iteracion[0].id_user);
+
+                            }
 
                         }// fin de success
+
+                        
 
                     });// fin function ajax
                   
 
                   }//fin for
 
+                 
+                  
+                  
+
             }
   
 
-                 function metho() {
-
+                 function save_reporte(result, id_user) {
+                        
+                     
                      $.ajax({
-                         type: datos.Iteracion[0].verb,
-                         url: datos.Iteracion[0].url + datos.Iteracion[0].action,
+                         type: 'POST',
+                         url: '/Reporte/register_reporte',
                          data: {
-                             id_user: 6,
+                             result: result,
+                             id_user: id_user,
                          },
 
                          success: function (data) {
 
-                             alert(JSON.stringify(data));
+                             alert('Reporte Guardado' + result);
+                             
 
                          }// fin de success
 
