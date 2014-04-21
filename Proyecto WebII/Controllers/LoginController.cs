@@ -52,20 +52,30 @@ namespace Proyecto_WebII.Controllers
 
         public ActionResult index(string username, string pass)
         {
-            
-            StringBuilder sql = new StringBuilder();
-            sql.AppendLine("select *");
-            sql.AppendLine("from Login_Register login");
-            sql.AppendLine("where login.username = @username and ");
-            sql.AppendLine("login.pass = @pass ");
-            var prueba = db.Database.SqlQuery<Login_Register>(sql.ToString(), new SqlParameter("username", username), new SqlParameter("pass", pass)).ToList();
-            ViewBag.prueba = prueba.ToList();
+            if (!String.IsNullOrEmpty(username) && !String.IsNullOrEmpty(pass))
+            {
 
-            if (prueba.ToList().Count == 0)
+
+                StringBuilder sql = new StringBuilder();
+                sql.AppendLine("select *");
+                sql.AppendLine("from Login_Register login");
+                sql.AppendLine("where login.username = @username and ");
+                sql.AppendLine("login.pass = @pass ");
+                var prueba = db.Database.SqlQuery<Login_Register>(sql.ToString(), new SqlParameter("username", username), new SqlParameter("pass", pass)).ToList();
+                ViewBag.prueba = prueba.ToList();
+
+
+
+                if (prueba.ToList().Count == 0)
+                {
+                    return RedirectToAction("Login_user");
+                }
+
+            }
+            else
             {
                 return RedirectToAction("Login_user");
             }
-
             //return RedirectToAction("prueba");
 
             return View();

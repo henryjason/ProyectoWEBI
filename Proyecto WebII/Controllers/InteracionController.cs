@@ -63,5 +63,23 @@ namespace Proyecto_WebII.Controllers
 
         }
 
+        [HttpPost]
+        public ActionResult delete_Interacion(int id_iteracion)
+        {
+
+        
+            Interacions iteracion = db.oInteracion.Find(id_iteracion);
+            db.oInteracion.Remove(iteracion);
+            db.SaveChanges();
+
+            return null;
+      
+
+            //return Iteracion;
+
+        }
+
+
+
     }
 }

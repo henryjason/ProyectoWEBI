@@ -189,7 +189,22 @@
                 });//$("#Run").on('clik', function () {
     
 
+              $(".delete").on('click', function () {
+
+
+                  alert("hola");
+
+              });//$("#Run").on('clik', function () {
+
+
+
+
+
             });
+
+       
+
+            
 
         </script>
 
@@ -225,7 +240,11 @@
 
                     //  $('#ListaIteracions').append('<div><input type="text"  value="' + data.Iteracion[i].name + '" required="required"/>' + '<p>' + data.Iteracion[i].parametro + '<p/><a href="#" class="delete">&times;</a></div>');
 
-                    tabla = tabla + '<tr> <td><input type = "checkbox"  id="' + data.Iteracion[i].id + '"/>' +
+
+
+                
+
+                    tabla = tabla + '<tr> <td> <button type="button" onclick="myFunction(' + data.Iteracion[i].id + ')">Delete</button>' +
                                     '</td> <td>' + 'Name: ' + data.Iteracion[i].name + '<br>' + 'Url: ' + data.Iteracion[i].url + '<br>' + 'Action: ' + data.Iteracion[i].action + '<br>' + 'Verb: ' + data.Iteracion[i].verb + '<br>' +
                                     '</td> <td>' + p +
                                     '</td> <td>' + v +
@@ -241,7 +260,7 @@
 
             }
 
-                 function buil(datos) {
+            function buil(datos) {
 
              // alert(datos.Iteracion[0].name);
                    
@@ -327,9 +346,8 @@
                   
 
             }
-  
 
-                 function save_reporte(result, id_user) {
+            function save_reporte(result, id_user) {
                         
                      
                      $.ajax({
@@ -349,6 +367,40 @@
 
                      });// fin function ajax
                  }
+
+            function myFunction(id) {
+
+                $.ajax({
+                    type: 'post',
+                    url: '/Interacion/delete_Interacion',
+                    data: {
+                        id_iteracion: id,
+                    },
+
+                    success: function (data) {
+
+                        $.ajax({
+                            type: 'POST',
+                            url: "/Interacion/get_Interacion",
+                            data: {
+                                id_user: '@ViewBag.prueba[0].id',
+                    },
+
+                            success: function (data) {
+
+                                datos = data;
+                                buil_table(datos);
+
+                            }// fin de success
+
+                        });// fin function ajax
+                     
+                    }// fin de success
+
+
+                });// fin function ajax
+
+            }
 
         </script>
         
