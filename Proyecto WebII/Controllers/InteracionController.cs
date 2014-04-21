@@ -79,7 +79,17 @@ namespace Proyecto_WebII.Controllers
 
         }
 
+        [HttpPost]
+        public String prueba2(String va1, String val2 )
+        {
 
+
+          
+            return "Valor 1: " + va1 + " Valor 2: " + val2;
+
+
+
+        }
 
     }
 }

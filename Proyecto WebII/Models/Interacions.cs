@@ -10,18 +10,17 @@ namespace Proyecto_WebII.Models
     {
 
 
-            [Required]
             public Int32 id { get; set; }
-            [Required]
+          
             public Int32 id_user { get; set; }
-            [Required]
+          
             public String name { get; set; }
             public String url { get; set; }
-            [Required]
+        
             public String action { get; set; }
-            [Required]
+           
             public String verb { get; set; }
-            [Required]
+          
             public String parametro { get; set; }
 
     }

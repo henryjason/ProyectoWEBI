@@ -18,6 +18,8 @@ namespace Proyecto_WebII
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Login", action = "Login_user", id = UrlParameter.Optional }
             );
+
+
         }
     }
 }
